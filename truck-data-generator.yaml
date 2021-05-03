@@ -55,7 +55,7 @@ spec:
         - name: TLOAD # 0 to 100 in %
           value: "50"
         - name: COUNTRY
-          value: "GER"
+          value: "UK"
       dnsPolicy: ClusterFirst
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 1
