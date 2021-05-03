@@ -74,6 +74,7 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/rewrite-target: /
   name: truck-data-connector-ingress
 spec:
   rules:
