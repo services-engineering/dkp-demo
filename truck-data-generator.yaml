@@ -58,5 +58,5 @@ spec:
           value: "UK"
       dnsPolicy: ClusterFirst
       schedulerName: default-scheduler
-      restartPolicy: Never
+#      restartPolicy: Never
       terminationGracePeriodSeconds: 1
