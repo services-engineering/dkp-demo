@@ -18,6 +18,8 @@ This branch was created to roll-out the truck efficiency demo. It is meant to sh
 
 To create the resources needed like the api's, a frontend and the data generator we will simply use [Kommander Project Deployments](https://docs.d2iq.com/dkp/kommander/1.3/projects/project-deployments/). You will find all the Kubernetes manifests in this repository. As this repo is Public you won't need a Git Secret. You just need to specify a name, the Repository URL and a branch. That's all? **Yes**.
 
+Detailed instructions for deploying the Truck Efficiency Demo can be found [HERE](https://github.com/mesosphere/dkp-demo/blob/main/install-tutorial.md)
+
 What will be installed?
 
 ![Demo](https://github.com/jlnhnng/gitops-demo/blob/demo/Truck-Efficiency.png?raw=true)
