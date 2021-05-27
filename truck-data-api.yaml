@@ -35,7 +35,7 @@ spec:
         app: truck-data-api
     spec:
       containers:
-      - image: d2iqdemo/truck-data-api:latest
+      - image: d2iqdemo/truck-data-api:arm
         imagePullPolicy: Always
         name: truck-data-api
         resources: {}
@@ -54,7 +54,7 @@ spec:
               name: dataservices
               key: Kafka
       initContainers:
-      - image: d2iqdemo/truck-kafka-init:latest
+      - image: d2iqdemo/truck-kafka-init:arm
         imagePullPolicy: Always
         name: truck-kafka-init
         env:

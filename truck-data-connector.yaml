@@ -22,7 +22,7 @@ spec:
         app: truck-data-connector
     spec:
       containers:
-      - image: d2iqdemo/truck-data-connector:latest
+      - image: d2iqdemo/truck-data-connector:arm
         imagePullPolicy: Always
         name: truck-data-connector
         resources: {}
@@ -44,7 +44,7 @@ spec:
               name: dataservices
               key: Cassandra
       initContainers:
-      - image: d2iqdemo/truck-cassandra-init:latest
+      - image: d2iqdemo/truck-cassandra-init:arm
         imagePullPolicy: Always
         name: cassandra-init
         env:

@@ -36,7 +36,7 @@ spec:
         app: truck-demo-ui
     spec:
       containers:
-      - image: d2iqdemo/truck-demo-ui:latest
+      - image: d2iqdemo/truck-demo-ui:arm
         imagePullPolicy: Always
         name: truck-demo-ui
         resources: {}
