@@ -3,10 +3,10 @@ kind: Project
 metadata:
   name: edge-workloads
   namespace: edge-clusters
+  annotations:
+    kommander.mesosphere.io/description: ""
+    kommander.mesosphere.io/display-name: Edge Workloads
 spec:
   workspaceRef:
-    name: secret-business-unit
-  placement:
-    clusterSelector:
-      matchLabels:
-        project: "flyingcar"
+    name: edge-clusters
+  namespaceName: edge-workloads

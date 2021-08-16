@@ -2,3 +2,8 @@ apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
 kind: Workspace
 metadata:
   name: edge-clusters
+  annotations:
+    kommander.mesosphere.io/description: ""
+    kommander.mesosphere.io/display-name: Edge Clusters
+spec:
+  namespaceName: edge-clusters
