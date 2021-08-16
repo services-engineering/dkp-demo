@@ -1,0 +1,11 @@
+apiVersion: types.kubefed.io/v1beta1
+kind: FederatedConfigMap
+metadata:
+  generateName: data-endpoints
+  namespace: edge-workloads
+spec:
+  placement:
+    clusterSelector: {}
+  template:
+    data:
+      key: value

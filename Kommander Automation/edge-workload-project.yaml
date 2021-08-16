@@ -1,0 +1,12 @@
+apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+kind: Project
+metadata:
+  name: edge-workloads
+  namespace: edge-clusters
+spec:
+  workspaceRef:
+    name: secret-business-unit
+  placement:
+    clusterSelector:
+      matchLabels:
+        project: "flyingcar"
