@@ -1,0 +1,9 @@
+apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+kind: Workspace
+metadata:
+  name: data-clusters
+  annotations:
+    kommander.mesosphere.io/description: ""
+    kommander.mesosphere.io/display-name: Data Clusters
+spec:
+  namespaceName: data-cluster

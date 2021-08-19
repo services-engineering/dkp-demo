@@ -1,8 +1,10 @@
-# GitOps DKP Truck Efficiency Demonstration
+# Edge GitOps DKP Truck Efficiency Demonstration
 
 This tutorial was designed to roll-out the truck efficiency demo. It is meant to show how easy it is to use DKP.
 
 In this tutorial we will be making use of key functions of D2iQ Kommander for deploying, and managing the lifecycle of, a complex IoT app comprised of microservices (stateless) and dataservice (stateful) components exposed to the outside world.
+
+This Branch includes every YAML that should get deployed to the Central Data Cluster.
 
 ## Prerequirements
 
@@ -13,6 +15,8 @@ In this tutorial we will be making use of key functions of D2iQ Kommander for de
 * `kubectl` configured on local desktop or some other host to access the cluster
 * Access to the "Truck-Demo" GitHub Repository (this one)
   * <https://github.com/mesosphere/dkp-demo/>
+* A k0s cluster on a Raspberry Pi or other ARM-based infrastructure
+  * <https://k0sproject.io/>
 
 ## Log In to  Kommander with Provided Credentials at Provided URL
 
@@ -25,14 +29,36 @@ Kommander delivers visibility and management of any Kubernetes cluster, whether 
 > For more information on Kommander, please see the following link:
 > <https://docs.d2iq.com/dkp/kommander/latest/introducing-kommander/>
 
-## Navigate to _Default Workspace_
+## Create a Workspace: _Data Clusters_
 
 Workspaces give you the flexibility to represent your organization in a way that makes sense for your team and configuration.  For example, you can create separate workspaces for each department, product, or business function. Each workspace manages their own clusters and role-based permissions, while retaining an overall organization-level view of all clusters in operation.
 
-1. In the upper-left hand corner of the screen (just to the right of the _Kommander_ label) click the pull-down menu and select _Default Workspace_
+1. In the left navigation click on Workspaces. Next, click on Create Workspace. This will show you the form to create a new workspace. Please provide a name like Data Clusters and click on Submit.
 
 > For more information on Workspaces in Kommander, please see the following link:<br>
 > <https://docs.d2iq.com/dkp/kommander/latest/workspaces/>
+
+> Advanced: *Another way to create a workspace is to use a yaml file, provided in the folder: Kommander Automation. To use it, please make sure you are conntected via kubectl to your Kommander Cluster. For creating, please use: `kubectl apply -f "data-workspace.yaml`*
+
+## Attach a Cluster
+
+You can attach an existing Kubernetes cluster of any vendor directly to Kommander. In this example, we will attach the existing Cluster to itself and call it `local-cluster`.
+
+1. In the upper-left hand corner of the screen (just to the right of the Kommander label) click the pull-down menu and select _Data Clusters_.
+2. In the left navigation click on _Clusters_
+3. In the upper-right hand corner of "I-Frame", click _Add cluster_
+4. In the selection we choose _Attach a cluster_ and click on _With no network restrictions_
+5. In this screen, complete the following entries:
+
+* Cluster Name: `local-cluster`
+* Workspace: `Data Clusters`
+* Kubeconfig File: _Use the admin.conf file to attach the cluster to itself_
+* Click on Submit to attach the cluster to Kommander
+
+If everything is done properly, you will see the cluster overview of the Data Clusters Workspace.  
+
+> For more information on Workspaces in Kommander, please see the following link:<br>
+> <https://docs.d2iq.com/dkp/kommander/latest/clusters/attach-cluster/>
 
 ## Create a Project for your Workload
 
@@ -42,8 +68,8 @@ A Project, in this context, refers to a central location (Kommander) that hosts 
 2. In the middle of the screen, click _Create Project_ to create a new project.
 3. In the _Create Project_ screen, complete the following entries.
 
-* Project Name: `truck-demo`
-* ID/Namespace: `truck-demo` (this field will be revealed once you have entered the "Project Name" text box above.)
+* Project Name: `Data Services`
+* ID/Namespace: `data-services` (this field will be revealed once you have entered the "Project Name" text box above.)
 * Description: `whatever you want`
 * In the _Clusters_ selection of the page, click _Manually Select Clusters_ and place your cursor in the _Select Cluster_ text box
 * Select `local-cluster` to add this cluster to the below list of selected clusters.
@@ -55,6 +81,8 @@ If everything is done properly, you will see a popup menu with "Success" and a g
 
 > For more information on Projects in Kommander, please see the following link:<br>
 > <https://docs.d2iq.com/dkp/kommander/latest/projects/>
+
+> Advanced: *Another way to create a project is to use a yaml file, provided in the folder: Kommander Automation. To use it, please make sure you are conntected via kubectl to your Kommander Cluster. For creating, please use: `kubectl apply -f "ata-project.yaml`*
 
 ## Deploy Project Platform Services
 
@@ -163,9 +191,9 @@ Kommander Projects can be configured with GitOps based Continuous Deployments fo
 
 3. Fill in the _Create GitOps Source_ fields as shown below:
 
-* ID (name): `truck-demo-microservices`
+* ID (name): `edge-demo-microservices`
 * Repository URL: `https://github.com/mesosphere/dkp-demo/`
-* Branch/Tag: `main`
+* Branch/Tag: `data`
 * Path:
 * Primary Git Secret: `None`
 
@@ -191,10 +219,7 @@ kafka-kafka-2                              2/2     Running   0          16m
 kustomize-controller-86f6d9c7f5-l85jx      1/1     Running   0          9m16s
 notification-controller-76db5d5595-cdz8g   1/1     Running   0          9m16s
 source-controller-5b9b95d7dc-wq7ph         1/1     Running   0          9m16s
-truck-data-api-6b94f4d57f-pmm5d            1/1     Running   0          9m4s
 truck-data-connector-64776c664c-86tx7      1/1     Running   0          9m4s
-truck-data-generator-b495898c6-cxrjn       1/1     Running   3          9m4s
-truck-data-generator-b495898c6-rkpmt       1/1     Running   3          9m4s
 truck-demo-ui-fcc87d97-22s8f               1/1     Running   0          9m4s
 zookeeper-zookeeper-0                      1/1     Running   0          19m
 zookeeper-zookeeper-1                      1/1     Running   0          19m
@@ -218,28 +243,5 @@ truck-demo-ui-svc   LoadBalancer   10.0.25.160   af29fd5e9f5d640efbbfcede326aac0
 2. Copy the External IP (similar to `af29fd5e9f5d640efbbfcede326aac0b-1185872992.us-west-2.elb.amazonaws.com`), paste it into a new browser window and prepend it with `http://` if the page does not automatically load. You should now be presented with the home page for the DKP Workshop - Electric Truck Tracking Application.
 
 > Be patient, it can take up to 5 minutes foir AWS LoadBalancers and DNS to update themselves completely.
-
-## Be a kid again... Play With Your Trucks
-
-1. You should see 3 trucks on the road going across England using different routes "Cannonball Run" style.
-
-2. If they have completed already, you can delete the jobs and their associated pods.
-
-```
-kubectl delete jobs truck-1 -n truck-demo
-kubectl delete jobs truck-2 -n truck-demo
-kubectl delete jobs truck-3 -n truck-demo
-kubectl delete pods truck-1-XXXXX -n truck-demo
-kubectl delete pods truck-2-XXXXX -n truck-demo
-kubectl delete pods truck-3-XXXXX -n truck-demo
-```
-
-3. ..and redeploy the jobs from the yaml in the repository:
-
-```
-kubectl apply -f https://raw.githubusercontent.com/mesosphere/dkp-demo/main/truck-data-generator-1.yaml
-kubectl apply -f https://raw.githubusercontent.com/mesosphere/dkp-demo/main/truck-data-generator-2.yaml
-kubectl apply -f https://raw.githubusercontent.com/mesosphere/dkp-demo/main/truck-data-generator-3.yaml
-```
 
 That's it.  Now, any Kubernetes clusters that are added to this project will automatically have this entire application stack pushed to it.
