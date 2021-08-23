@@ -82,7 +82,7 @@ If everything is done properly, you will see a popup menu with "Success" and a g
 > For more information on Projects in Kommander, please see the following link:<br>
 > <https://docs.d2iq.com/dkp/kommander/latest/projects/>
 
-> Advanced: *Another way to create a project is to use a yaml file, provided in the folder: Kommander Automation. To use it, please make sure you are conntected via kubectl to your Kommander Cluster. For creating, please use: `kubectl apply -f "ata-project.yaml`*
+> Advanced: *Another way to create a project is to use a yaml file, provided in the folder: Kommander Automation. To use it, please make sure you are conntected via kubectl to your Kommander Cluster. For creating, please use: `kubectl apply -f "data-project.yaml`*
 
 ## Deploy Project Platform Services
 
