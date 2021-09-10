@@ -175,6 +175,9 @@ For this exercise we will create 3 Key/Value Pairs under a single ConfigMap
 * And a Key/Value for the "Truck API" by clicking "Add Key Value" and adding the entries below:
   * Key: `API` (case sensitive)
   * Value: <URL for Kommander Web Page (https:// through .com)"
+* And a Key/Value for the "Namespace" by clicking "Add Key Value" and adding the entries below:
+  * Key: `Namespace` (case sensitive)
+  * Value: 'data-services'
 
 * Click _Create_ in the upper right hand corner of the screen to create the Project ConfigMap
 
