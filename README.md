@@ -69,7 +69,7 @@ For this exercise we will create one Key/Value Pair under a single ConfigMap
 2. Click the _Create ConfigMap_ button in the middle of the screen
 3. Fill in the _Create ConfigMap_ Screen
 
-* ID (name): `data-endpoints`
+* ID (name): `edge-endpoints`
 * Description: `This ConfigMap contains the Kafka Endpoint that will be used to stream the data from the Edge Cluster to the central data cluster.`
 * Under the "Data" a Key/Value pair for Kafka by clicking `Add Key Value` and adding mthe entries below:
   * Key: `Kafka` (case sensitive)
