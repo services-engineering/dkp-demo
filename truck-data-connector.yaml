@@ -48,23 +48,20 @@ spec:
         imagePullPolicy: Always
         name: truck-kafka-init
         env:
-        - name: KAFKA
+        - name: namespace
           valueFrom:
             configMapKeyRef:
               name: dataservices
-              key: Kafka
-        - name: namespace
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
+              key: Namespace
       - image: d2iqdemo/truck-cassandra-init:latest
         imagePullPolicy: Always
         name: cassandra-init
         env:
         - name: namespace
           valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
+            configMapKeyRef:
+              name: dataservices
+              key: Namespace
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
