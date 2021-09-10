@@ -53,16 +53,6 @@ spec:
             configMapKeyRef:
               name: edge-endpoints
               key: Kafka
-      initContainers:
-      - image: d2iqdemo/truck-kafka-init:latest
-        imagePullPolicy: Always
-        name: truck-kafka-init
-        env:
-        - name: KAFKA
-          valueFrom:
-            configMapKeyRef:
-              name: edge-endpoints
-              key: Kafka
       dnsPolicy: ClusterFirst
       schedulerName: default-scheduler
       securityContext: {}
