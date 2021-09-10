@@ -51,7 +51,7 @@ spec:
         - name: KAFKA
           valueFrom:
             configMapKeyRef:
-              name: edge-endpoints
+              name: dataservices
               key: Kafka
       - image: d2iqdemo/truck-cassandra-init:latest
         imagePullPolicy: Always
