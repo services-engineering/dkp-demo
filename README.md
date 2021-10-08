@@ -12,7 +12,7 @@ In this tutorial we will be making use of key functions of D2iQ Kommander for de
   * Administrator Password
 * `kubectl` configured on local desktop or some other host to access the cluster
 * Access to the "Truck-Demo" GitHub Repository (this one)
-  * <https://github.com/mesosphere/dkp-demo/>
+  * <https://github.com/services-engineering/dkp-demo>
 
 ## Log In to  Kommander with Provided Credentials at Provided URL
 
@@ -164,7 +164,7 @@ Kommander Projects can be configured with GitOps based Continuous Deployments fo
 3. Fill in the _Create GitOps Source_ fields as shown below:
 
 * ID (name): `truck-demo-microservices`
-* Repository URL: `https://github.com/mesosphere/dkp-demo/`
+* Repository URL: `https://github.com/services-engineering/dkp-demo`
 * Branch/Tag: `main`
 * Path:
 * Primary Git Secret: `None`
@@ -237,9 +237,9 @@ kubectl delete pods truck-3-XXXXX -n truck-demo
 3. ..and redeploy the jobs from the yaml in the repository:
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/mesosphere/dkp-demo/main/truck-data-generator-1.yaml
-kubectl apply -f https://raw.githubusercontent.com/mesosphere/dkp-demo/main/truck-data-generator-2.yaml
-kubectl apply -f https://raw.githubusercontent.com/mesosphere/dkp-demo/main/truck-data-generator-3.yaml
+kubectl apply -f https://raw.githubusercontent.com/services-engineering/dkp-demo/main/truck-data-generator-1.yaml
+kubectl apply -f https://raw.githubusercontent.com/services-engineering/dkp-demo/main/truck-data-generator-2.yaml
+kubectl apply -f https://raw.githubusercontent.com/services-engineering/dkp-demo/main/truck-data-generator-3.yaml
 ```
 
 That's it.  Now, any Kubernetes clusters that are added to this project will automatically have this entire application stack pushed to it.
