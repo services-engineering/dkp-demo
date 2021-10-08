@@ -33,7 +33,7 @@ spec:
         - name: NODE_TLS_REJECT_UNAUTHORIZED
           value: '0'
       initContainers:
-      - image: jlnhnng/cassandra-init:latest
+      - image: servicesengineering/cassandra-init:latest
         imagePullPolicy: Always
         name: cassandra-init
       dnsPolicy: ClusterFirst

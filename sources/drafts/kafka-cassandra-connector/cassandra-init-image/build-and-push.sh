@@ -1,2 +1,2 @@
-docker build . -t jlnhnng/cassandra-init
-docker push jlnhnng/cassandra-init
+docker build . -t servicesengineering/cassandra-init
+docker push servicesengineering/cassandra-init
