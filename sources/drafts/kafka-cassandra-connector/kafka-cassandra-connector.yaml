@@ -22,7 +22,7 @@ spec:
         app: kafka-cassandra-connector
     spec:
       containers:
-      - image: jlnhnng/kafka-cassandra-connector:latest
+      - image: servicesengineering/kafka-cassandra-connector:latest
         imagePullPolicy: Always
         name: kafka-cassandra-connector
         resources: {}
