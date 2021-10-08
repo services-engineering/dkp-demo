@@ -35,7 +35,7 @@ spec:
         app: kafka-client-api
     spec:
       containers:
-      - image: jlnhnng/kafka-client-api:latest
+      - image: servicesengineering/kafka-client-api:latest
         imagePullPolicy: Always
         name: kafka-client-api
         resources: {}
