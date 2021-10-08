@@ -20,6 +20,8 @@ spec:
     metadata:
       labels:
         app: kafka-cassandra-connector
+      annotations:
+        try: new-connector
     spec:
       containers:
       - image: servicesengineering/kafka-cassandra-connector:latest
